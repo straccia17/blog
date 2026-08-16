@@ -12,14 +12,12 @@ In the [first article](/posts/angularjs-fine-grained-reactivity-compiling-templa
 To recap, starting from this template:
 
 ```html
-<!-- simple.html -->
 <p>Hello {{ name }}!</p>
 ```
 
 Our Go compiler generates the following JavaScript module:
 
 ```javascript
-// simple.js
 export function template() {
     const p_0 = document.createElement("p");
     const text_1 = document.createTextNode("");
@@ -72,7 +70,6 @@ The answer lies in marrying the legacy Angular.js `$scope` with the modern **Jav
 In a traditional Angular.js application, developers mutate the state directly inside a controller by assigning properties to the `$scope` object:
 
 ```javascript
-// simple-controller.js
 export function SimpleController($scope) {
     $scope.name = "Mario";
 }
@@ -174,4 +171,3 @@ In the next part of this series, we will explore how we scaled this runtime arch
 
 ---
 
-*Thanks for reading! I’m a Frontend Architect passionate about compilers, reactivity, and performance. Let's connect on [LinkedIn](https://www.linkedin.com/in/carlostraccialini/) to stay updated with the next parts of this journey.*

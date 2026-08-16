@@ -10,7 +10,6 @@ tags: ['javascript', 'angularjs', 'reactivity', 'performance']
 In the last [article](/posts/angularjs-fine-grained-reactivity-proxy-runtime) of this series, we saw how to use the Proxy API to notify changes to the templates. For example, this controller:
 
 ```javascript
-// simple-controller.js
 export function SimpleController($scope) {
     $scope.name = "Mario";
 }
@@ -29,7 +28,6 @@ update(changes);
 Suppose now that we have a controller with multiple assignments:
 
 ```javascript
-// simple-controller.js
 export function SimpleController($scope) {
     $scope.name = "Mario";
     $scope.age = 24;
@@ -59,7 +57,6 @@ In a real-world controller, there are many more scope assignments than we've see
 Another common problem we might encounter is multiple assignments to the same property; this can lead to a flickering effect on the rendered view.
 
 ```javascript
-// simple-controller.js
 export function SimpleController($scope) {
     $scope.name = "Mario";
 
@@ -74,7 +71,7 @@ Let me explain how it works.
 
 The first assignment `$scope.name = "Mario"` produces a change that immediately calls the `update` function from the template, so the view is updated. For a fraction of a second, the current user sees the string "Mario" on the screen.
 
-After some time, due to the computation time of the `age` variable, the second assignment `$scope.name = \`${$scope.name}${age}\`;` is executed. This second call to the same `update` function causes a redraw of the browser window so the user can finally see "Mario 24" (assuming the result of `computeAge()` is 24).
+After some time, due to the computation time of the `age` variable, the second assignment ``$scope.name = `${$scope.name}${age}`;`` is executed. This second call to the same `update` function causes a redraw of the browser window so the user can finally see "Mario 24" (assuming the result of `computeAge()` is 24).
 
 Depending on that computation time, the user might actually see this visual flickering, making it a real risk for the user experience.
 
@@ -126,5 +123,3 @@ What happens with `$scope.person.name = 'Mario'`? Until now, we only support cha
 In the next article, we'll dive into how to track, solve, and notify this kind of deep changes.
 
 ---
-
-*Thanks for reading! I’m a Frontend Architect passionate about compilers, reactivity, and performance. Let's connect on [LinkedIn](https://www.linkedin.com/in/carlostraccialini/) to stay updated with the next parts of this journey.*

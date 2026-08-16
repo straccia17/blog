@@ -101,5 +101,3 @@ The browser no longer needs to scan the entire page. Instead, the runtime immedi
 But how does the runtime intercept these changes without a digest cycle? This is where the modern **JavaScript Proxy API** comes into play—and that is exactly what we will explore in the next part of this series.
 
 ---
-
-*Thanks for reading! I’m a Frontend Architect passionate about compilers, reactivity, and performance. Let's connect on [LinkedIn](https://www.linkedin.com/in/carlostraccialini/) to stay updated with the next parts of this journey.*
