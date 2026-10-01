@@ -70,7 +70,7 @@ if (postData.tags && postData.tags.length > 0) {
   author={postData.author}
   tags={postData.tags}
 >
-  <article class="max-w-full py-7.5" data-pagefind-body>
+  <article class="article-page max-w-full py-9 md:py-14" data-pagefind-body>
     {
       postData.coverImage && (
         <Image
@@ -82,11 +82,14 @@ if (postData.tags && postData.tags.length > 0) {
         />
       )
     }
-    <div class="md:mx-2">
-      <h1 id={post.id} class="mb-4 text-[1.75rem] text-heading1 font-semibold">
-        # {postData.title}
+    <div class="article-heading max-w-3xl mx-auto">
+      <h1
+        id={post.id}
+        class="mb-5 text-4xl md:text-5xl text-heading1 font-semibold tracking-tight"
+      >
+        {postData.title}
       </h1>
-      <div class="my-2 border-l-2 border-accent/80 pl-4 py-2">
+      <div class="my-3">
         <PostInfo post={post} class="mb-1" />
         {
           tags && (
@@ -98,9 +101,11 @@ if (postData.tags && postData.tags.length > 0) {
       </div>
     </div>
     <!-- <hr class="border-accent/10 border-2 rounded-xl hidden lg:block" /> -->
-    <div class="flex flex-col xl:gap-1 2xl:gap-18 xl:flex-row xl:items-start">
+    <div
+      class="article-body flex flex-col xl:gap-1 2xl:gap-18 xl:flex-row xl:items-start"
+    >
       {postData.toc && headings.length > 0 && <TableOfContents headings={headings} />}
-      <div class="mb-5 xl:min-w-full 2xl:min-w-full prose">
+      <div class="mb-5 max-w-3xl mx-auto prose">
         <PostContent />
       </div>
     </div>

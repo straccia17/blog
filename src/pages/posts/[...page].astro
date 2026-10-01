@@ -15,11 +15,16 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props
 const pageTitle = 'Archive' + (page.currentPage > 1 ? ` - Page ${page.currentPage}` : '')
+const totalPosts = page.total
 ---
 
 <Layout title={pageTitle} description="All posts in the archive">
   <div class="mt-2 sm:mt-0">
-    <PageHeader />
+    <PageHeader title="Archive" />
+    <p class="page-intro">
+      {totalPosts} essays on frontend systems, reactivity, compilers, and performance—newest
+      first.
+    </p>
     {page.data.map((post) => <PostPreview post={post} />)}
     <Pagination
       prevLink={page.url.prev ? page.url.prev : undefined}

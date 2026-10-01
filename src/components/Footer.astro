@@ -4,14 +4,16 @@ import SocialLinks from '~/components/SocialLinks.astro'
 ---
 
 <footer
-  class="mt-auto pt-9 md:pt-11 grow-0 flex flex-col gap-6 items-center justify-between max-w-full text-foreground/80"
+  class="site-footer mt-auto pt-10 md:pt-14 grow-0 flex flex-col gap-6 items-start justify-between max-w-full text-foreground/70"
 >
   {siteConfig.socialLinks && <SocialLinks socialLinks={siteConfig.socialLinks} />}
-  <div class="flex flex-col md:flex-row flex-wrap flex-1 items-center justify-center">
+  <div
+    class="flex flex-col md:flex-row flex-wrap flex-1 items-start md:items-center text-sm"
+  >
     <span class="my-1">
       {siteConfig.author} © {new Date().getFullYear()}
     </span>
-    <span class="mx-5 hidden md:block"> :: </span>
+    <span class="mx-3 hidden md:block">·</span>
     <span class="my-1">
       Powered by <a
         class="underline"

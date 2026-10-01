@@ -1,8 +1,12 @@
 ---
 layout: '~/layouts/MarkdownLayout.astro'
-title: About Me
+title: About me
 ---
 
-I'm Carlo Straccialini, a Frontend Architect interested in compilers, fine-grained reactivity, and web performance.
+I’m Carlo Straccialini, a frontend architect based in Italy. I enjoy working at the point where product interfaces meet the systems underneath them—especially compilers, fine-grained reactivity, and web performance.
 
-This is where I share technical notes and practical explorations from that work. You can also find me on [LinkedIn](https://www.linkedin.com/in/carlostraccialini/) and [GitHub](https://github.com/straccia17).
+This blog is where I turn practical experiments and lessons from that work into clear, reusable notes.
+
+## Elsewhere
+
+You can find my code and open-source work on [GitHub](https://github.com/straccia17), or connect with me on [LinkedIn](https://www.linkedin.com/in/carlostraccialini/).

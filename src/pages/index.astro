@@ -38,32 +38,38 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
     )
   }
   {
-    postsHaveSeries && (
-      <section>
-        <BlockHeader>Series</BlockHeader>
-        <SeriesSection posts={sortedPosts} />
-      </section>
-    )
-  }
-  {
-    postsHaveTags && (
-      <section>
-        <BlockHeader>Tags</BlockHeader>
-        <TagsSection posts={sortedPosts} />
-      </section>
-    )
-  }
-  {
     sortedPosts.length > 0 && (
-      <section>
-        <BlockHeader>Latest Posts</BlockHeader>
-        {sortedPosts
+      <section class="home-latest">
+        <BlockHeader>Latest articles</BlockHeader>
+        {[...sortedPosts]
           .reverse()
           .slice(0, Math.floor(siteConfig.pageSize / 2))
           .map((post) => (
             <PostPreview post={post} />
           ))}
-        <Pagination nextLink="/posts" nextText="Archive" />
+        <Pagination nextLink="/posts" nextText="View the archive" />
+      </section>
+    )
+  }
+  {
+    (postsHaveSeries || postsHaveTags) && (
+      <section class="taxonomy-grid">
+        {postsHaveSeries && (
+          <div>
+            <BlockHeader>Series</BlockHeader>
+            <p class="section-note">
+              Follow a topic from first principles to implementation.
+            </p>
+            <SeriesSection posts={sortedPosts} />
+          </div>
+        )}
+        {postsHaveTags && (
+          <div>
+            <BlockHeader>Browse by tag</BlockHeader>
+            <p class="section-note">Jump directly to the subjects you care about.</p>
+            <TagsSection posts={sortedPosts} />
+          </div>
+        )}
       </section>
     )
   }

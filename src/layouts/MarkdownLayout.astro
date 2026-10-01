@@ -14,9 +14,9 @@ const { frontmatter } = Astro.props
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-  <div class="max-w-full py-7.5">
-    <h1 class="md:mx-2 mb-3 text-[1.75rem] text-heading1 font-semibold">
-      # {frontmatter.title}
+  <div class="content-page max-w-3xl py-8 md:py-14">
+    <h1 class="mb-6 text-4xl md:text-5xl text-heading1 font-semibold tracking-tight">
+      {frontmatter.title}
     </h1>
     <div class="mb-5 prose">
       <slot />

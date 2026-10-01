@@ -2,45 +2,44 @@
 import siteConfig from '~/site.config'
 import LightDarkAutoButton from '~/components/LightDarkAutoButton.astro'
 import Search from '~/components/Search.astro'
-import SelectTheme from '~/components/SelectTheme.astro'
 import NavLink from '~/components/NavLink.astro'
 
 const lightDarkAutoTheme = siteConfig.themes.mode === 'light-dark-auto'
-const selectTheme =
-  siteConfig.themes.mode === 'select' && siteConfig.themes.include.length > 1
 ---
 
-<header>
-  <div class="relative flex items-center justify-between bg-accent/10 rounded-xl">
+<header class="site-header">
+  <div class="relative flex items-center justify-between gap-5 py-2">
     <a
       id="logo"
       href="/"
-      class="flex items-baseline gap-2 px-4 py-1.5 max-w-full no-underline bg-accent text-background font-bold rounded-xl"
+      class="flex items-center gap-3 max-w-full no-underline text-foreground"
     >
-      <span>{siteConfig.title}</span>
-      {
-        siteConfig.authorHandle && (
-          <span class="text-xs font-normal opacity-75">@{siteConfig.authorHandle}</span>
-        )
-      }
+      <span aria-hidden="true" class="brand-mark">CS</span>
+      <span class="brand-label">
+        <span class="font-semibold tracking-tight">{siteConfig.title}</span>
+        {
+          siteConfig.authorHandle && (
+            <span class="brand-handle">@{siteConfig.authorHandle}</span>
+          )
+        }
+      </span>
     </a>
-    <div class="flex items-center gap-3 sm:mr-3">
+    <div class="flex items-center gap-2">
       <Search trailingSlashes={siteConfig.trailingSlashes} />
       {lightDarkAutoTheme && <LightDarkAutoButton />}
-      {selectTheme && <SelectTheme />}
-      <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
+      <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent md:hidden">
         <button
           id="nav-mobile-button"
-          class="px-3 py-1 h-full cursor-pointer border-2 rounded-xl bg-background"
+          class="mobile-menu-button px-3 py-1.5 h-full cursor-pointer rounded-full"
           type="button"
           aria-expanded="false"
           aria-controls="nav-menu-list"
         >
-          ▾
+          Menu
         </button>
         <ul
           id="nav-mobile-list"
-          class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
+          class="mobile-menu invisible absolute flex flex-col bg-background shadow text-accent m-0 p-3 top-12 left-auto right-0 z-50 rounded-2xl"
         >
           {
             siteConfig.navLinks.map((link) => (
@@ -53,11 +52,11 @@ const selectTheme =
       </nav>
     </div>
   </div>
-  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
-    <ul class="flex flex-row text-accent">
+  <nav aria-label="Primary" class="p-0 text-accent hidden md:block">
+    <ul class="flex flex-row justify-end gap-7 text-accent">
       {
         siteConfig.navLinks.map((link) => (
-          <li class="mr-5" aria-expanded="true">
+          <li aria-expanded="true">
             <NavLink link={link} />
           </li>
         ))
